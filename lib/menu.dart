@@ -77,9 +77,16 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(31, 0, 90, 1),
+      
       appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(207, 250, 77, 0.9),
         title: const Text(
           'aniiway',
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: 'Comic Sans MS',
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -93,11 +100,13 @@ class MyHomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
                 child: Text(
-                  '(｡◕‿◕｡)', // Text yang menandakan toko
+                  "(๑>◡<๑)♡ Shopping Time!", // Text yang menandakan toko
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
+                    color: Colors.white,
                   ),
                 ),
               ),
