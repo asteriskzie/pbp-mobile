@@ -41,7 +41,7 @@ Stateless widget tidak dapat diubah setelah dibuat (immutable), sedangkan statef
 
 7. `Column`: Widget ini digunakan untuk menampilkan children secara vertikal.
 
-8. `GridView.count`: Widget ini digunakan untuk membuat grid layout dengan jumlah kolom yang sudah ditentukan.
+8. `GridView`: Widget ini digunakan untuk membuat grid layout dengan jumlah kolom yang sudah ditentukan.
 
 9. `Icon`: Widget ini digunakan untuk menampilkan sebuah icon.
 
