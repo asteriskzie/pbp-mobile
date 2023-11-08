@@ -27,31 +27,28 @@ Stateless widget tidak dapat diubah setelah dibuat (immutable), sedangkan statef
 
 #### Sebutkan seluruh widget yang kamu gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
 
-1. `Material`: Widget ini digunakan untuk membuat sebuah material design card yang memiliki bentuk dan warna yang sudah ditentukan.
-
-2. `InkWell`: Widget ini digunakan untuk membuat area yang responsif terhadap sentuhan pengguna.
-
-3. `Scaffold`: Widget ini digunakan untuk membuat sebuah halaman yang memiliki struktur dasar seperti app bar, body, dan floating action button.
-
-4. `AppBar`: Widget ini digunakan untuk membuat sebuah app bar yang biasanya berisi judul halaman dan tombol navigasi.
-
-5. `SingleChildScrollView`: Widget ini digunakan untuk membuat sebuah wrapper yang dapat discroll.
-
-6. `Padding`: Widget ini digunakan untuk memberikan padding pada widget yang diinginkan.
-
-7. `Column`: Widget ini digunakan untuk menampilkan children secara vertikal.
-
-8. `GridView`: Widget ini digunakan untuk membuat grid layout dengan jumlah kolom yang sudah ditentukan.
-
-9. `Icon`: Widget ini digunakan untuk menampilkan sebuah icon.
-
-10. `Text`: Widget ini digunakan untuk menampilkan sebuah teks.
-
-11. `SnackBar`: Widget ini digunakan untuk menampilkan sebuah pesan singkat yang muncul di bagian bawah layar.
+1. `MaterialApp`: Widget ini digunakan untuk membuat sebuah material design app.
+2. `Material`: Widget ini digunakan untuk membuat sebuah material design card yang memiliki bentuk dan warna yang sudah ditentukan.
+3. `InkWell`: Widget ini digunakan untuk membuat area yang responsif terhadap sentuhan pengguna.
+4. `Scaffold`: Widget ini digunakan untuk membuat sebuah halaman yang memiliki struktur dasar seperti app bar, body, dan floating action button.
+5. `ScaffoldMessenger`: Widget ini digunakan untuk membuat sebuah messenger yang dapat menampilkan snackbar.
+6. `AppBar`: Widget ini digunakan untuk membuat sebuah app bar yang biasanya berisi judul halaman dan tombol navigasi.
+7. `Container`: Widget ini digunakan untuk membuat sebuah container.
+8. `Center`: Widget ini digunakan untuk membuat sebuah wrapper yang dapat menengahkan widget yang ada di dalamnya.
+9. `SingleChildScrollView`: Widget ini digunakan untuk membuat sebuah wrapper yang dapat discroll.
+10. `Padding`: Widget ini digunakan untuk memberikan padding pada widget yang diinginkan.
+11. `Column`: Widget ini digunakan untuk menampilkan children secara vertikal.
+12. `GridView`: Widget ini digunakan untuk membuat grid layout dengan jumlah kolom yang sudah ditentukan.
+13. `Icon`: Widget ini digunakan untuk menampilkan sebuah icon.
+14. `Text`: Widget ini digunakan untuk menampilkan sebuah teks.
+15. `SnackBar`: Widget ini digunakan untuk menampilkan sebuah pesan singkat yang muncul di bagian bawah layar.
 
 #### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
 
 1. Menginisiasi project flutter dengan `flutter create aniiway`
 2. Merapikan folder project dengan memisahkan main dan menu 
-3. Mengedit `menu.dart` untuk menambahkan menu yang dibutuhkan
+3. Membuat class ShopItem yang berisi nama dan icon 
+4. Membuat class ShopCard yang berisi ShopItem dan atribut color, gunanya sebagai card tampilan ShopItem dengan warna sesuai atribut color 
+5. Menambahkan list ShopItem yang berisi ShopItem yang akan ditampilkan
+6. Menampilkan list ShopItem di MyHomePage dengan menggunakan GridView
   

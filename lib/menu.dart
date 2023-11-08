@@ -9,8 +9,9 @@ class ShopItem {
 
 class ShopCard extends StatelessWidget {
   final ShopItem item;
+  final Color color;
 
-  const ShopCard(this.item, {super.key}); // Constructor
+  const ShopCard(this.item, this.color, {super.key}); // Constructor
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class ShopCard extends StatelessWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
-      color: const Color.fromRGBO(135, 0, 196, 1),
+      color: color,
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {
@@ -92,7 +93,7 @@ class MyHomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
                 child: Text(
-                  '(~ U w U)~', // Text yang menandakan toko
+                  '(｡◕‿◕｡)', // Text yang menandakan toko
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -109,10 +110,7 @@ class MyHomePage extends StatelessWidget {
                 mainAxisSpacing: 10,
                 crossAxisCount: 3,
                 shrinkWrap: true,
-                children: items.map((ShopItem item) {
-                  // Iterasi untuk setiap item
-                  return ShopCard(item);
-                }).toList(),
+                children: [ShopCard(items[0], Colors.deepPurple.shade400), ShopCard(items[1], Colors.deepPurple.shade600), ShopCard(items[2], Colors.deepPurple.shade800)],
               ),
             ],
           ),
