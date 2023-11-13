@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:aniiway/screens/shopping_form.dart'; 
+import 'package:aniiway/widgets/left_drawer.dart';
+
 
 class ShopItem {
   final String name;
@@ -28,6 +31,12 @@ class ShopCard extends StatelessWidget {
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
+
+          if (item.name == "Tambah Item") {
+            Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => const ShopFormPage())
+            ); 
+          }
         },
         child: Container(
           // Container untuk menyimpan Icon dan Text
@@ -78,7 +87,6 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(31, 0, 90, 1),
-      
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(207, 250, 77, 0.9),
         title: const Text(
@@ -89,6 +97,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
       ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
@@ -119,7 +128,11 @@ class MyHomePage extends StatelessWidget {
                 mainAxisSpacing: 10,
                 crossAxisCount: 3,
                 shrinkWrap: true,
-                children: [ShopCard(items[0], Colors.deepPurple.shade400), ShopCard(items[1], Colors.deepPurple.shade600), ShopCard(items[2], Colors.deepPurple.shade800)],
+                children: [
+                  ShopCard(items[0], Colors.deepPurple.shade400),
+                  ShopCard(items[1], Colors.deepPurple.shade600),
+                  ShopCard(items[2], Colors.deepPurple.shade800)
+                ],
               ),
             ],
           ),

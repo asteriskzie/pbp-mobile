@@ -51,4 +51,55 @@ Stateless widget tidak dapat diubah setelah dibuat (immutable), sedangkan statef
 4. Membuat class ShopCard yang berisi ShopItem dan atribut color, gunanya sebagai card tampilan ShopItem dengan warna sesuai atribut color 
 5. Menambahkan list ShopItem yang berisi ShopItem yang akan ditampilkan
 6. Menampilkan list ShopItem di MyHomePage dengan menggunakan GridView
-  
+
+### Tugas 8 
+
+#### Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+
+Perbedaan utama antara Navigator.push() dan Navigator.pushReplacement() terletak pada cara mereka menangani tampilan yang sudah ada. Dengan Navigator.push(), kita menambahkan tampilan baru di atas tumpukan (stack) tampilan yang sedang ditampilkan. Contohnya, jika kita memiliki tampilan A dan kemudian menggunakan push() untuk menambahkan tampilan B, maka A akan tetap ada di bawah B.
+
+Di sisi lain, Navigator.pushReplacement() menggantikan tampilan yang sedang ditampilkan dengan tampilan baru. Misalnya, jika kita sedang menampilkan tampilan A dan kemudian menggunakan pushReplacement() untuk beralih ke tampilan B, maka A akan langsung digantikan oleh B di dalam stack.
+
+```
+// Menggunakan Navigator.push() untuk menambahkan tampilan baru
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => TampilanB()),
+);
+
+// Menggunakan Navigator.pushReplacement() untuk menggantikan tampilan
+Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(builder: (context) => TampilanB()),
+);
+```
+
+Pada contoh pertama, TampilanB() akan ditambahkan di atas tumpukan, sedangkan pada contoh kedua, TampilanB() akan menggantikan tampilan yang sedang ditampilkan.
+
+#### Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+
+1. Container: Digunakan untuk menempatkan widget lain di dalamnya dan memberikan kontrol atas propertinya seperti padding, margin, dan dekorasi.
+2. Column dan Row: Untuk mengatur widget secara vertikal (Column) atau horizontal (Row).
+3. ListView dan GridView: Menyusun widget secara berurutan atau dalam bentuk grid, cocok untuk menampilkan data dalam jumlah banyak.
+4. Stack: Mengizinkan penumpukan widget di atas satu sama lain, memberikan fleksibilitas dalam penyusunan elemen tumpuk.
+5. Expanded dan Flexible: Digunakan untuk mengatur tata letak fleksibel, terutama saat bekerja dengan widget seperti Column dan Row.
+
+#### Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+
+TextFormField untuk input text. Saya menggunakan itu karena buth input text. 
+
+#### Bagaimana penerapan clean architecture pada aplikasi Flutter?
+
+Penerapan clean architecture pada aplikasi Flutter melibatkan pemisahan kode menjadi tiga lapisan utama: Presentation Layer (UI), Domain Layer (Business Logic), dan Data Layer (Persistence dan External Services).
+
+1. Presentation Layer: Berisi UI, seperti widget, dan logic tampilan. Menggunakan BLoC (Business Logic Component) atau Provider untuk mengelola state aplikasi.
+
+2. Domain Layer: Menyimpan bisnis logic dan aturan aplikasi tanpa tergantung pada teknologi. Ini berisi use case dan model bisnis.
+
+3. Data Layer: Bertanggung jawab untuk mengambil dan menyimpan data, baik dari database lokal maupun sumber eksternal. Repository digunakan sebagai abstraksi untuk mengakses data.
+
+Keuntungan clean architecture dalam Flutter termasuk kode yang lebih terorganisir, fleksibilitas dalam penggantian teknologi di lapisan data, dan pengujian yang lebih mudah. Clean architecture memastikan bahwa aplikasi mudah di-maintain, diuji, dan dapat berkembang seiring waktu tanpa terlalu bergantung pada framework atau library tertentu.
+
+#### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
+Pertama saya membuat halaman untuk shoping form. Saya menggunakan 3 textfield untuk menjadi input nama barang, ampunt, dan description. Setelah itu, saya membuat tampilan drawer. Saya menghubungkan tampilan shopping tadi ke drawer dengan menggunakan routing dari drawer. Selanjutnya, saya juga menghubungkan tampulan shopping tadi ke halaman menu supaya bisa diakses dari menu. 
