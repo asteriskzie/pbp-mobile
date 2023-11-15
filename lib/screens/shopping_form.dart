@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:aniiway/screens/shopping_list.dart'; 
+import 'package:provider/provider.dart';
+import 'package:aniiway/widgets/item.dart';
+import 'package:aniiway/main.dart';
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -16,6 +18,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
 
   @override
   Widget build(BuildContext context) {
+    final itemsData = Provider.of<MyDataModel>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Center(
@@ -131,6 +134,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                                   )),
                                 );
                               });
+                          itemsData.addData(Item(_name, _amount, _description));
                           // ShopListPage.items.add(Item(_name, _amount, _description));
                         }
                         _formKey.currentState!.reset();

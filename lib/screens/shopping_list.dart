@@ -1,44 +1,7 @@
+import 'package:aniiway/main.dart';
 import 'package:flutter/material.dart';
-
-class Item {
-  final String name;
-  final int amount;
-  final String description;
-
-  Item(this.name, this.amount, this.description);
-}
-
-class ItemCard extends StatelessWidget {
-  final Item item;
-  const ItemCard(this.item, {super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-        ),
-        color: Colors.deepPurple,
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(item.name,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white)),
-                Text((item.amount).toString(),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white)),
-                Text(item.description,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white)),
-              ],
-            ),
-          ),
-        ));
-  }
-}
+import 'package:aniiway/widgets/item.dart';
+import 'package:provider/provider.dart';
 
 class ShopListPage extends StatefulWidget {
   const ShopListPage({super.key});
@@ -48,16 +11,10 @@ class ShopListPage extends StatefulWidget {
 }
 
 class _ShopListPageState extends State<ShopListPage> {
-  List<Item> items = [];
-
-  void addItem(Item newItem) {
-    setState(() {
-      items.add(newItem); 
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final List<Item> items = Provider.of<MyDataModel>(context).data;
+
     return Scaffold(
         appBar: AppBar(
           title: const Center(
@@ -69,7 +26,9 @@ class _ShopListPageState extends State<ShopListPage> {
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
+            child: Wrap(
+              spacing: 10.0, // Spasi antar item
+              runSpacing: 10.0, // Spasi antar baris
               // Looping untuk menampilkan seluruh item
               children: items.map((item) {
                 return ItemCard(item);

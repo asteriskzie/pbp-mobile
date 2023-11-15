@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:aniiway/screens/menu.dart';
+import 'package:provider/provider.dart';
+import 'package:aniiway/widgets/item.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => MyDataModel(),
+    child: const MyApp(),
+  ));
+}
+
+class MyDataModel extends ChangeNotifier {
+  List<Item> data = [];
+
+  void addData(Item newData) {
+    data.add(newData); 
+    notifyListeners();
+  }
 }
 
 class MyApp extends StatelessWidget {
