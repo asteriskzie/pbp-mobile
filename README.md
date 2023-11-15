@@ -56,45 +56,78 @@ Stateless widget tidak dapat diubah setelah dibuat (immutable), sedangkan statef
 
 #### Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
 
-Perbedaan utama antara Navigator.push() dan Navigator.pushReplacement() terletak pada cara mereka menangani tampilan yang sudah ada. Dengan Navigator.push(), kita menambahkan tampilan baru di atas tumpukan (stack) tampilan yang sedang ditampilkan. Contohnya, jika kita memiliki tampilan A dan kemudian menggunakan push() untuk menambahkan tampilan B, maka A akan tetap ada di bawah B.
+Perbedaan utama antara `Navigator.push()` dan `Navigator.pushReplacement()` terletak pada cara mereka menangani tampilan yang sudah ada. Dengan `Navigator.push()`, kita menambahkan tampilan baru di atas tumpukan (stack) tampilan yang sedang ditampilkan. Contohnya, jika kita memiliki tampilan A dan kemudian menggunakan `push()` untuk menambahkan tampilan B, maka A akan tetap ada di bawah B. Ketika memencet tombol back, kita akan kembali ke tampilan A.
 
-Di sisi lain, Navigator.pushReplacement() menggantikan tampilan yang sedang ditampilkan dengan tampilan baru. Misalnya, jika kita sedang menampilkan tampilan A dan kemudian menggunakan pushReplacement() untuk beralih ke tampilan B, maka A akan langsung digantikan oleh B di dalam stack.
+Di sisi lain, `Navigator.pushReplacement()` menggantikan tampilan yang sedang ditampilkan dengan tampilan baru. Misalnya, jika kita sedang menampilkan tampilan A dan kemudian menggunakan `pushReplacement()` untuk beralih ke tampilan B, maka A akan langsung digantikan oleh B di dalam stack. Ketika memencet tombol back, kita akan kembali ke tampilan sebelum A.
 
-```
-// Menggunakan Navigator.push() untuk menambahkan tampilan baru
+```dart
 Navigator.push(
   context,
-  MaterialPageRoute(builder: (context) => TampilanB()),
+  MaterialPageRoute(builder: (context) => SecondRoute()),
 );
 
-// Menggunakan Navigator.pushReplacement() untuk menggantikan tampilan
 Navigator.pushReplacement(
   context,
-  MaterialPageRoute(builder: (context) => TampilanB()),
+  MaterialPageRoute(builder: (context) => SecondRoute()),
 );
 ```
 
-Pada contoh pertama, TampilanB() akan ditambahkan di atas tumpukan, sedangkan pada contoh kedua, TampilanB() akan menggantikan tampilan yang sedang ditampilkan.
 
 #### Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
 
 1. Container: Digunakan untuk menempatkan widget lain di dalamnya dan memberikan kontrol atas propertinya seperti padding, margin, dan dekorasi.
 2. Column dan Row: Untuk mengatur widget secara vertikal (Column) atau horizontal (Row).
-3. ListView dan GridView: Menyusun widget secara berurutan atau dalam bentuk grid, cocok untuk menampilkan data dalam jumlah banyak.
-4. Stack: Mengizinkan penumpukan widget di atas satu sama lain, memberikan fleksibilitas dalam penyusunan elemen tumpuk.
-5. Expanded dan Flexible: Digunakan untuk mengatur tata letak fleksibel, terutama saat bekerja dengan widget seperti Column dan Row.
+3. Stack: Mengizinkan penumpukan widget di atas satu sama lain, memberikan fleksibilitas dalam penyusunan elemen tumpuk.
+
+```dart
+Container(
+  padding: EdgeInsets.all(8.0),
+  margin: EdgeInsets.all(8.0),
+  decoration: BoxDecoration(
+    color: Colors.white,
+    border: Border.all(
+      color: Colors.black,
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(8),
+  ),
+  child: Column(
+    children: [
+      Text('Hello'),
+      Text('World'),
+    ],
+  ),
+);
+
+Row(
+  children: [
+    Text('Hello'),
+    Text('World'),
+  ],
+);
+
+Stack(
+  children: [
+    Text('Hello'),
+    Text('World'),
+  ],
+);
+```
 
 #### Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
 
-TextFormField untuk input text. Saya menggunakan itu karena buth input text. 
+Saya menggunakan `TextFormField` untuk menginput text, saya menggunakannya karena jenis input yang dibutuhkan (nama, jumlah, dan deskripsi) adalah text. 
+
+Saya juga menggunakan `ElevatedButton` untuk input aksi dari pengguna untuk submit, saya menggunakannya karena jenis input yang dibutuhkan adalah button.
+
 
 #### Bagaimana penerapan clean architecture pada aplikasi Flutter?
 
-Penerapan clean architecture pada aplikasi Flutter melibatkan pemisahan kode menjadi tiga lapisan utama: Presentation Layer (UI), Domain Layer (Business Logic), dan Data Layer (Persistence dan External Services).
+Penerapan clean architecture pada aplikasi Flutter melibatkan pemisahan kode menjadi tiga lapisan utama: Presentation Layer (antarmuka pengguna), Domain Layer (logika bisnis), dan Data Layer (akses data).
 
 1. Presentation Layer: Berisi UI, seperti widget, dan logic tampilan. Menggunakan BLoC (Business Logic Component) atau Provider untuk mengelola state aplikasi.
 
-2. Domain Layer: Menyimpan bisnis logic dan aturan aplikasi tanpa tergantung pada teknologi. Ini berisi use case dan model bisnis.
+2. Domain Layer: Menyimpan logic dan aturan aplikasi tanpa tergantung pada teknologi. Ini berisi use case dan model bisnis.
 
 3. Data Layer: Bertanggung jawab untuk mengambil dan menyimpan data, baik dari database lokal maupun sumber eksternal. Repository digunakan sebagai abstraksi untuk mengakses data.
 
@@ -102,4 +135,6 @@ Keuntungan clean architecture dalam Flutter termasuk kode yang lebih terorganisi
 
 #### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
 
-Pertama saya membuat halaman untuk shoping form. Saya menggunakan 3 textfield untuk menjadi input nama barang, ampunt, dan description. Setelah itu, saya membuat tampilan drawer. Saya menghubungkan tampilan shopping tadi ke drawer dengan menggunakan routing dari drawer. Selanjutnya, saya juga menghubungkan tampulan shopping tadi ke halaman menu supaya bisa diakses dari menu. 
+- Pertama saya membuat halaman untuk shoping form. Saya menggunakan 3 textfield untuk menjadi input nama barang, ampunt, dan description. Selain itu saya menambahkan button untuk submit. Ketika di-submit, akan muncul pop-up yang berisi nama barang, amount, dan description yang diinputkan.
+- Setelah itu, saya membuat tampilan drawer. Saya menghubungkan tampilan shopping tadi ke drawer dengan menggunakan routing dari drawer. 
+- Selanjutnya, saya juga menghubungkan tampulan shopping tadi ke halaman menu supaya bisa diakses dari menu, yakni melalui button 'Tambah Item'.
