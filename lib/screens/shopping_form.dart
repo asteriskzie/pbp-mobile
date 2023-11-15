@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:aniiway/screens/shopping_list.dart'; 
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -130,13 +131,12 @@ class _ShopFormPageState extends State<ShopFormPage> {
                                   )),
                                 );
                               });
+                          // ShopListPage.items.add(Item(_name, _amount, _description));
                         }
                         _formKey.currentState!.reset();
                       },
-                      child: const Text(
-                        "Submit", 
-                        style: TextStyle(color: Colors.white)
-                      ),
+                      child: const Text("Submit",
+                          style: TextStyle(color: Colors.white)),
                     ),
                   ))
             ],
