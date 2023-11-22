@@ -13,9 +13,9 @@ class ProductCard extends StatelessWidget {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
-        color: Colors.white,
+        color: Colors.deepPurple.shade200,
         child: Container(
-          padding: const EdgeInsets.all(8), 
+          padding: const EdgeInsets.all(8),
           child: InkWell(
             onTap: () {
               Navigator.push(
@@ -27,25 +27,27 @@ class ProductCard extends StatelessWidget {
                           item.fields.description,
                           item.fields.user)));
             },
-            child: Container(
-              padding: const EdgeInsets.all(8),
+            child: IntrinsicWidth(
               child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
                     item.fields.name,
-                    style: const TextStyle(fontSize: 20),
+                    style: const TextStyle(color: Colors.white),
+
                   ),
                   Text(
                     item.fields.amount.toString(),
-                    style: const TextStyle(fontSize: 20),
+                    style: const TextStyle(color: Colors.white),
                   ),
                   Text(
                     item.fields.description,
-                    style: const TextStyle(fontSize: 20),
+                    style: const TextStyle(color: Colors.white),
                   ),
                   Text(
                     item.fields.user.toString(),
-                    style: const TextStyle(fontSize: 20),
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ],
               ),
