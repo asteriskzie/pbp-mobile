@@ -1,7 +1,11 @@
+import 'dart:convert';
+import 'package:aniiway/globals.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:aniiway/widgets/item.dart';
 import 'package:aniiway/main.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:aniiway/screens/menu.dart';
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -18,7 +22,9 @@ class _ShopFormPageState extends State<ShopFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    final itemsData = Provider.of<MyDataModel>(context);
+    const createUrl = "${globals.appUrl}create-flutter/"; 
+    final request = context.watch<CookieRequest>();
+    final itemsData = Provider.of<MyDataModel>(context, listen: false);
     return Scaffold(
         appBar: AppBar(
           title: const Center(
@@ -114,30 +120,40 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.deepPurple),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title:
-                                      const Text('Produk berhasil tersimpan'),
-                                  content: SingleChildScrollView(
-                                      child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text("Nama: $_name"),
-                                      Text("Jumlah: $_amount"),
-                                      Text("Deskripsi: $_description"),
-                                    ],
-                                  )),
-                                );
-                              });
+                          // Kirim ke Django dan tunggu respons
+                          // Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                          // final itemsData = Provider.of<MyDataModel>(context, listen: false);
+                          final response = await request.postJson(
+                              createUrl,
+                              jsonEncode(<String, String>{
+                                'name': _name,
+                                'amount': _amount.toString(),
+                                'description': _description,
+                                // Sesuaikan field data sesuai dengan aplikasimu
+                              }));
+
+                          if (response['status'] == 'success') {
                           itemsData.addData(Item(_name, _amount, _description));
-                          // ShopListPage.items.add(Item(_name, _amount, _description));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text("Berhasil menambahkan item."),
+                            ));
+                            // itemsData.addData(Item(_name, _amount, _description));                      
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyHomePage()),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text(
+                                  "Terdapat kesalahan, silakan coba lagi."),
+                            ));
+                          }
                         }
-                        _formKey.currentState!.reset();
                       },
                       child: const Text("Submit",
                           style: TextStyle(color: Colors.white)),

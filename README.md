@@ -138,3 +138,27 @@ Keuntungan clean architecture dalam Flutter termasuk kode yang lebih terorganisi
 - Pertama saya membuat halaman untuk shoping form. Saya menggunakan 3 textfield untuk menjadi input nama barang, ampunt, dan description. Selain itu saya menambahkan button untuk submit. Ketika di-submit, akan muncul pop-up yang berisi nama barang, amount, dan description yang diinputkan.
 - Setelah itu, saya membuat tampilan drawer. Saya menghubungkan tampilan shopping tadi ke drawer dengan menggunakan routing dari drawer. 
 - Selanjutnya, saya juga menghubungkan tampulan shopping tadi ke halaman menu supaya bisa diakses dari menu, yakni melalui button 'Tambah Item'.
+
+
+### Tugas 9
+
+#### Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+Bisa, tapi belum tentu lebih baik 
+
+#### Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+CookieRequest digunakan untuk mengirimkan cookie ke server. CookieRequest perlu dibagikan ke semua komponen di aplikasi Flutter karena cookie yang dikirimkan ke server akan disimpan di dalam CookieRequest.
+
+#### Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+1. Membuat model untuk data yang akan diambil dari JSON.
+2. Membuat fungsi untuk mengambil data dari JSON.
+3. Memanggil fungsi untuk mengambil data dari JSON pada model.
+4. Membuat fungsi untuk menampilkan data yang sudah diambil dari JSON.
+5. Memanggil fungsi untuk menampilkan data yang sudah diambil dari JSON pada fungsi untuk menampilkan data yang sudah diambil dari JSON.
+  
+
+#### Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+
+#### Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+#### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).

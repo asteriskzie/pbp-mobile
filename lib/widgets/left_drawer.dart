@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:aniiway/screens/menu.dart';
 import 'package:aniiway/screens/shopping_form.dart';
+import 'package:aniiway/screens/list_product.dart';
+import 'package:aniiway/screens/list_new_product.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -39,7 +41,6 @@ class LeftDrawer extends StatelessWidget {
               ],
             ),
           ),
-          
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Halaman Utama'),
@@ -62,6 +63,28 @@ class LeftDrawer extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => const ShopFormPage(),
                   ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_basket),
+            title: const Text('Daftar Produk'),
+            onTap: () {
+              // Route menu ke halaman produk
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProductPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_basket),
+            title: const Text('Baru Ditambahkan'),
+            onTap: () {
+              // Route menu ke halaman produk
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ShopListPage()),
+              );
             },
           ),
         ],
