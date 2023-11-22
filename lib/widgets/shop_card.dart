@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:aniiway/screens/shopping_form.dart';
-import 'package:aniiway/screens/list_new_product.dart';
 import 'package:aniiway/screens/list_product.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -48,6 +47,7 @@ class ShopCard extends StatelessWidget {
           }
           if (item.name == "Logout") {
             final response = await request.logout(logoutUrl);
+            if (!context.mounted) return;
             String message = response["message"];
             if (response['status']) {
               String uname = response["username"];
@@ -60,7 +60,7 @@ class ShopCard extends StatelessWidget {
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("$message"),
+                content: Text(message),
               ));
             }
           }

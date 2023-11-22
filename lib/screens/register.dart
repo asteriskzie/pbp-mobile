@@ -25,10 +25,10 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  RegisterPageState createState() => RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class RegisterPageState extends State<RegisterPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmationController =
@@ -80,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         'password': password,
                         'password_confirmation': passwordConfirmation
                       });
-
+                      if (!context.mounted) return;
                       if (response['status']) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text(

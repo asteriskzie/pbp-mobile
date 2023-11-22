@@ -133,6 +133,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                                 'description': _description,
                                 // Sesuaikan field data sesuai dengan aplikasimu
                               }));
+                          
+                          if (!context.mounted) return; 
 
                           if (response['status'] == 'success') {
                             itemsData.addData(Item(_name, _amount, _description));
