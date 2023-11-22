@@ -135,7 +135,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                               }));
 
                           if (response['status'] == 'success') {
-                          itemsData.addData(Item(_name, _amount, _description));
+                            itemsData.addData(Item(_name, _amount, _description));
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                               content: Text("Berhasil menambahkan item."),

@@ -4,6 +4,7 @@ import 'package:aniiway/widgets/left_drawer.dart';
 import 'package:aniiway/globals.dart' as globals;
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:aniiway/widgets/product_card.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -71,18 +72,7 @@ class _ProductPageState extends State<ProductPage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "${snapshot.data![index].fields.name}",
-                                  style: const TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Text("${snapshot.data![index].fields.amount}"),
-                                const SizedBox(height: 10),
-                                Text(
-                                    "${snapshot.data![index].fields.description}")
+                                ProductCard(snapshot.data![index]),                                
                               ],
                             ),
                           ));
