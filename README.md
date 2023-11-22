@@ -143,22 +143,46 @@ Keuntungan clean architecture dalam Flutter termasuk kode yang lebih terorganisi
 ### Tugas 9
 
 #### Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
-Bisa, tapi belum tentu lebih baik 
+Bisa saja, tapi belum tentu lebih baik tergantung kegunaan kita. Jika ingin digunakan sekali pakai saja, mungkin akan lebih cepat langsung menggunakan JSON. Namun, dalam konteks aplikas inventory ini, menurut saya pribadi lebih baik menggunakan model saja karena akan lebih mudah untuk mengelola data yang diambil dari JSON serta lebih intuitif ketika digunakan. 
+
 
 #### Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
 CookieRequest digunakan untuk mengirimkan cookie ke server. CookieRequest perlu dibagikan ke semua komponen di aplikasi Flutter karena cookie yang dikirimkan ke server akan disimpan di dalam CookieRequest.
 
+
 #### Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
-1. Membuat model untuk data yang akan diambil dari JSON.
-2. Membuat fungsi untuk mengambil data dari JSON.
-3. Memanggil fungsi untuk mengambil data dari JSON pada model.
-4. Membuat fungsi untuk menampilkan data yang sudah diambil dari JSON.
-5. Memanggil fungsi untuk menampilkan data yang sudah diambil dari JSON pada fungsi untuk menampilkan data yang sudah diambil dari JSON.
+1. Membuat request ke server menggunakan `http.get()`.
+2. Decode response dari server menggunakan `json.decode()`.
+3. Mengambil data yang dibutuhkan dari response menggunakan `data['key']`.
+4. Data json sudah bisa digunakan dan ditampilkan pada Flutter sesuai kebutuhan, baik dengan menggunakan model maupun tidak. 
   
 
 #### Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+1. Mengambil data dari inputan Flutter menggunakan `TextEditingController.text`.
+2. Membuat request ke server menggunakan `http.post()`.
+3. Mendapat response dari server. 
+4. Jika berhasil, page akan berganti ke tampilan menu flutter.
 
 
 #### Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+- Scaffold: Widget ini digunakan untuk membuat sebuah halaman yang memiliki struktur dasar seperti app bar, body, dan floating action button.
+- FutureBuilder: Widget ini digunakan untuk membuat sebuah widget yang akan dibangun di masa depan.
+- Center: Widget ini digunakan untuk membuat sebuah wrapper yang dapat menengahkan widget yang ada di dalamnya.
+- Column: Widget ini digunakan untuk menampilkan children secara vertikal.
+- Container: Widget ini digunakan untuk membuat sebuah container.
+- TextField: Widget ini digunakan untuk membuat sebuah text field.
+- ElevatedButton: Widget ini digunakan untuk membuat sebuah button yang memiliki efek bayangan.
+- TextButton: Widget ini digunakan untuk membuat sebuah button text.
+- AppBar: Widget ini digunakan untuk membuat sebuah app bar yang biasanya berisi judul halaman dan tombol navigasi.
+- ListTile: Widget ini digunakan untuk membuat sebuah list tile.
 
 #### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+1. Memastikan deployment proyek tugas Django sudah berjalan dengan baik dengan melakukan push ulang pada proyek Django, kemudian memastikan deployment sudah ada. 
+2. Membuat halaman login pada proyek tugas Flutter dengan menggunakan widget `TextField` untuk mengambil input username dan password, serta menggunakan widget `ElevatedButton` untuk mengirimkan data ke server. 
+3. Membuat django-app khusus bernama `authentication` yang megatur sistem autentikasi. Membuat views pada django-app tersebut untuk tiap fitur autentikasi. Login dan logout pada proyek flutter mengirimkan data ke views login dan logout pada django-app `authentication`.
+4. Membuat model kustom Product pada `models/product.dart` yang merepresentasikan `main.models.Item` pada proyek Django.
+5. Membuat halaman yang berisi daftar semua item yang terdapat pada endpoint JSON di Django yang telah terdeploy dengan mengirimkan get request ke endpoint tersebut menggunakan `http.get()`.
+6. Menampilkan name, amount, dan description dari masing-masing item pada halaman yang berisi daftar semua item.
+7. Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item. Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item. Tampilkan seluruh atribut pada model item kamu pada halaman ini.Tambahkan tombol untuk kembali ke halaman daftar item.
+8. Untuk bonus, mengimplementasikan fitur registrasi akun pada aplikasi Flutter dan mengintegrasikannya dengan Django. Caranya dengan membuat halaman registrasi pada aplikasi Flutter yang mengirimkan data ke endpoint registrasi pada Django.
+9. Untuk bonus kedua, melakukan filter pada halaman daftar item dengan hanya menampilkan item yang terasosiasi dengan pengguna yang login, dengan membuat endpoint json baru yang memfilter pengguna yang login. 
