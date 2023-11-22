@@ -6,13 +6,13 @@ class ProductPage extends StatelessWidget {
   final String description;
   final int owner; // User ID
 
-  ProductPage(this.name, this.amount, this.description, this.owner);
+  const ProductPage(this.name, this.amount, this.description, this.owner, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Detail Produk"),
+        title: const Text("Detail Produk"),
       ),
       body: Center(
         child: Column(
@@ -36,7 +36,7 @@ class ProductPage extends StatelessWidget {
             ),
             ElevatedButton(onPressed: () => {
               Navigator.pop(context)
-            }, child: Text("Kembali"))
+            }, child: const Text("Kembali"))
           ],
         ),
       ),
