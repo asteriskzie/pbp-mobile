@@ -186,3 +186,5 @@ CookieRequest digunakan untuk mengirimkan cookie ke server. CookieRequest perlu 
 7. Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item. Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item. Tampilkan seluruh atribut pada model item kamu pada halaman ini.Tambahkan tombol untuk kembali ke halaman daftar item.
 8. Untuk bonus, mengimplementasikan fitur registrasi akun pada aplikasi Flutter dan mengintegrasikannya dengan Django. Caranya dengan membuat halaman registrasi pada aplikasi Flutter yang mengirimkan data ke endpoint registrasi pada Django.
 9. Untuk bonus kedua, melakukan filter pada halaman daftar item dengan hanya menampilkan item yang terasosiasi dengan pengguna yang login, dengan membuat endpoint json baru yang memfilter pengguna yang login. 
+
+[![Build status](https://build.appcenter.ms/v0.1/apps/323a2352-29cb-4b62-8f74-6b2466253fd1/branches/main/badge)](https://appcenter.ms)
